@@ -12,12 +12,12 @@ mongoose.connect("mongodb://localhost/hcloned", {
     useNewUrlParser: true,
 });
 
-let code = `# Welcome to Tráfico de Drogas.
+let code = `# Welcome to Lashbin, A Hastebin Clone.
 
 > Click on New Project to create your own 
 code snippet & share it with your friends!
 
-> Made By Rortan`
+> Made By Rortan`;
 
 app.get("/", (req, res) => {
     res.render("saved-code", { code, language: "plaintext" });
@@ -37,6 +37,16 @@ app.post("/save", async (req, res) => {
     }
 });
 
+app.get("/:id/duplicate", async (req, res) => {
+    const id = req.params.id;
+    try {
+        const document = await Document.findById(id);
+        res.render("new", { value: document.value });
+    } catch (e) {
+        res.redirect(`/${id}`);
+    }
+});
+
 app.get("/:id", async (req, res) => {
     const id = req.params.id;
     try {
@@ -44,15 +54,6 @@ app.get("/:id", async (req, res) => {
         res.render("saved-code", { code: document.value, id });
     } catch (e) {
         res.redirect("/");
-    }
-});
-
-app.get("/:id/duplicate", async (req, res) => {
-    try {
-        const document = await Document.findById(id);
-        res.render("new", { value: document.value });
-    } catch (e) {
-        res.redirect(`/${id}`);
     }
 });
 

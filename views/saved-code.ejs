@@ -16,11 +16,13 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
         <script>
             hljs.highlightAll();
         </script>
-        <link rel="stylesheet" href="./main.css"></link>
-        <title>Hastebin Clone</title>
+        <link rel="stylesheet" href="/main.css"></link>
+        <title>Lashbin | Hastebin Clone</title>
     </head>
     <body>
         <%- include("_buttons.ejs", { id: locals.id, canCopyURL: true }) %>
