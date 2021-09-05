@@ -1,11 +1,27 @@
 <div class="buttons-wrapper">
-    <a href="/" class="home">Welcome to tráfico de drogas</a>
+    <a href="/" class="home">Home</a>
     <div class="header__buttons">
-        <button class="btn" type="submit">Save</button>
-        <a href="/new" class="btn">New</a>
         <% if (locals.canSave) { %>
-
-        <button class="btn" type="submit">etc</button>
-       <% } %>
-        </div>
+        <button class="btn" type="submit">Save</button>
+        <% } %>
+        <a href="/new" class="btn">New Project</a>
+        <% if (locals.id != null) { %>
+        <a href="/<%= locals.id %>/duplicate" class="btn" type="submit"
+            >Duplicate</a
+        >
+        <% } %> <% if (locals.canCopyURL) { %>
+        <button class="btn" onclick="copyToClipboard();">Copy Link</button>
+        <% } %>
+    </div>
 </div>
+<script>
+    function copyToClipboard(text) {
+        var inputc = document.body.appendChild(document.createElement("input"));
+        inputc.value = window.location.href;
+        inputc.focus();
+        inputc.select();
+        document.execCommand("copy");
+        inputc.parentNode.removeChild(inputc);
+        alert("URL Copied.");
+    }
+</script>
