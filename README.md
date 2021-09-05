@@ -1,4 +1,6 @@
 # Lashbin. A Hastebin Clone
-![Lashbin Example](https://imgur.com/a/tE9F16X.gif)
+![LashbinExample](https://i.imgur.com/DnaEph7.gif)
+
+
 
 Note: Mongodb is required to run locally.
